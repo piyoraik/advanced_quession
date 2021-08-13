@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_user, only: [:edit, :update, :show]
-	before_action :set_users, only: [:index]
 	before_action :edit_auth, only: [:edit, :update]
 
 	def index
+		@users = User.all
 	end
 
 	def edit
@@ -22,10 +22,6 @@ class UsersController < ApplicationController
 	end
 
 	private
-	def set_users
-		@users = User.all
-	end
-
 	def set_user
 		@user = User.find(params[:id])
 	end
@@ -35,7 +31,8 @@ class UsersController < ApplicationController
 	end
 
 	def edit_auth
-		unless current_user.id == params[:id]
+		user = User.find(params[:id])
+		unless current_user.id == user.id
 			redirect_to user_path(params[:id])
 		end
 	end

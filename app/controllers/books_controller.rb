@@ -1,11 +1,11 @@
 class BooksController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_books, only: [:index, :create]
 	before_action :set_book, only: [:show, :edit ,:destroy, :update]
-	before_action :set_newbook, only: [:index]
 	before_action :edit_auth, only: [:edit, :update, :destroy]
 
 	def index
+		@book = Book.new
+		@books = Book.all.includes(:user)
 	end
 
 	def show
@@ -28,6 +28,7 @@ class BooksController < ApplicationController
 		if @book.save
 			redirect_to book_path(@book.id)
 		else
+			@books = Book.all.includes(:user)
 			render :index
 		end
 	end
@@ -41,16 +42,8 @@ class BooksController < ApplicationController
 	end
 
 	private
-	def set_books
-		@books = Book.all
-	end
-
 	def set_book
 		@book = Book.find(params[:id])
-	end
-
-	def set_newbook
-		@book = Book.new
 	end
 
 	def book_params
