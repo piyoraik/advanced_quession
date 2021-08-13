@@ -1,0 +1,20 @@
+<div class='col-4'>
+<%= render 'users/info' %>
+</div>
+<div class="col-8">
+	<h2>Books</h2>
+	<table class="table">
+		<thead>
+			<th>Title</th>
+			<th>Options</th>
+		</thead>
+		<tbody>
+			<% @books.each do |book| %>
+				<tr>
+					<td><%= book.title %></td>
+					<td><%= book.body %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
