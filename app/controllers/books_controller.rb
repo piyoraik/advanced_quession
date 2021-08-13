@@ -51,9 +51,8 @@ class BooksController < ApplicationController
 	end
 
 	def edit_auth
-		book = Book.find(params[:id])
-		unless current_user.id == book.user.id
-			redirect_to book_path(params[:id])
+		unless current_user.id == @book.user.id
+			redirect_to book_path(@book.id)
 		end
 	end
 end

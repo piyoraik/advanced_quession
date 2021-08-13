@@ -31,9 +31,8 @@ class UsersController < ApplicationController
 	end
 
 	def edit_auth
-		user = User.find(params[:id])
-		unless current_user.id == user.id
-			redirect_to user_path(params[:id])
+		unless current_user.id == @user.id
+			redirect_to user_path(@user.id)
 		end
 	end
 end
