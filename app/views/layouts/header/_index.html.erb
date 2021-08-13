@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-					<%= render current_user ? 'layouts/header/afterLogin' : 'layouts/header/beforeLogin' %>
+					<%= current_user ? render('layouts/header/afterLogin') : render('layouts/header/beforeLogin') %>
         </ul>
       </div>
     </div>

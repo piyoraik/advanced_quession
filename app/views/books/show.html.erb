@@ -1,0 +1,30 @@
+<div class='col-4'>
+	<%= render 'layouts/info', user: @book.user, book: Book.new %>
+</div>
+<div class="col-8">
+	<h2>Book Detail</h2>
+	<table class="table">
+		<thead>
+			<th></th>
+			<th>Title</th>
+			<th>Body</th>
+			<th>編集・削除</th>
+		</thead>
+		<tbody>
+		<tr>
+			<td>
+				<%= image_tag @book.user.image_display("60x60") %>
+			</td>
+			<td>
+				<%= @book.title %>
+			</td>
+			<td>
+				<%= @book.body %>
+			</td>
+			<td>
+				<%= current_user == @book.user ? (render 'books/editlink') : "" %>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

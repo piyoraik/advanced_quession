@@ -1,0 +1,20 @@
+<div class='col-4'>
+	<%= render 'layouts/info', user: current_user, book: Book.new %>
+</div>
+<div class="col-8">
+	<table class="table">
+		<thead>
+			<th>image</th>
+			<th colspan="2">name</th>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= image_tag user.image_display("60x60") %></td>
+				<td><%= user.name %></td>
+				<td><%= link_to "show", user_path(user.id) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

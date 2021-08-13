@@ -1,0 +1,13 @@
+<%= form_with model: book do |f| %>
+	<div class="form-group">
+		<%= f.label :title %>
+		<%= f.text_field :title, value: book.title ,class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.label :body %>
+		<%= f.text_area :body, value: book.body, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.submit :submit, class: 'btn btn-success form-control' %>
+	</div>
+<% end %>

@@ -1,0 +1,24 @@
+<div class='col-4'>
+	<%= render 'layouts/info', user: @user, book: Book.new %>
+</div>
+<div class="col-8">
+	<h2>Books</h2>
+	<table class="table">
+		<thead>
+			<th>Title</th>
+			<th>Option</th>
+		</thead>
+		<tbody>
+			<% @user.books.each do |book| %>
+				<tr>
+					<td><%= book.title %></td>
+					<td><%= book.body %></td>
+					<td>
+						<%= link_to 'Edit', edit_book_path(book.id) %>
+						<%= link_to 'Delete', book_path(book.id), method: :delete %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
