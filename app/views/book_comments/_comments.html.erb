@@ -1,0 +1,8 @@
+<table class="comments">
+	<% book.book_comments.each do |book_comment| %>
+	<tr id="comment_<%= book_comment.id %>">
+		<td><%= image_tag book_comment.user.image_display("30x30") %><%= book_comment.comment %></td>
+		<%= current_user == book_comment.user ? (render 'books/destroylinkComment', book: book_comment.book) : "" %>
+	</tr>
+	<% end %>
+</table>
