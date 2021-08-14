@@ -10,4 +10,12 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  def self.search(word)
+    if word
+      Book.where('title LIKE(?)', "%#{word}%").or(Book.where('body LIKE(?)', "%#{word}%")).includes(:user)
+    else
+      Book.all.includes(:user)
+    end
+  end
 end

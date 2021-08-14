@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def image_display(size)
     unless image.attached?
-      file_path = Rails.root.join('app', 'assets', 'images', 'default.png')
+      file_path = Rails.root.join('app/assets/images/default.png')
       image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
     end
     image.variant(resize: size.to_s)
