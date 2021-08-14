@@ -8,6 +8,12 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all.includes(:user)
+    @ratio = {
+      "today_count" => Book.created_today.count,
+      "yesterday_count" => Book.created_yesterday.count,
+      "this_week_count" => Book.created_this_week.count,
+      "last_week_count" => Book.created_last_week.count
+    }
   end
 
   def show
