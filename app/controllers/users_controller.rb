@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :edit_auth, only: %i[edit update]
 
   def index
-    @users = User.all
+    @users = User.with_attached_image
   end
 
   def edit; end
