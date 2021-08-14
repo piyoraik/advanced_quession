@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   }
   resources :users, except: [:new, :create, :destroy] do
     resource :frendships, only: [:create, :destroy]
+    get '/follower' => "frendships#follower", as: "follower"
+    get '/followed' => "frendships#followed", as: "followed"
   end
   resources :books, except: [:new] do
     resource :favorites, only: [:create, :destroy]
