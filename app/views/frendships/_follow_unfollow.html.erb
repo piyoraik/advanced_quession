@@ -1,0 +1,9 @@
+<% if current_user.following?(user) %>
+	<%= link_to user_frendships_path(user.id), method: :delete, class: "btn btn-outline-secondary btn-block col-10 mx-auto" do %>
+		フォローを外す
+	<% end %>
+<% else %>
+	<%= link_to user_frendships_path(user.id), method: :post, class: "btn btn-outline-secondary btn-block col-10 mx-auto" do %>
+		フォローする
+	<% end %>
+<% end %>
