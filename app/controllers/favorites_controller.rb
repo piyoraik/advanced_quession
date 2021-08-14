@@ -1,18 +1,21 @@
+# frozen_string_literal: true
+
 class FavoritesController < ApplicationController
-	before_action :authenticate_user!
-	before_action :set_book, only: [:create, :destroy]
-	def create
-		favorite = current_user.favorites.new(book_id: @book.id)
-		favorite.save
-	end
+  before_action :authenticate_user!
+  before_action :set_book, only: %i[create destroy]
+  def create
+    favorite = current_user.favorites.new(book_id: @book.id)
+    favorite.save!
+  end
 
-	def destroy
-		favorite = current_user.favorites.find_by(book_id: @book.id)
-		favorite.destroy
-	end
+  def destroy
+    favorite = current_user.favorites.find_by(book_id: @book.id)
+    favorite.destroy!
+  end
 
-	private
-	def set_book
-		@book = Book.find(params[:book_id])
-	end
+  private
+
+  def set_book
+    @book = Book.find(params[:book_id])
+  end
 end
