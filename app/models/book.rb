@@ -13,12 +13,8 @@ class Book < ApplicationRecord
   # スコープ
   ## 当日の投稿
   scope :created_today, -> { where(created_at: Time.current.all_day).pluck(:id) }
-  ## 昨日の投稿
-  scope :created_yesterday, -> { where(created_at: Time.zone.yesterday.all_day).pluck(:id) }
-  ## 今週の投稿
-  scope :created_this_week, -> { where(created_at: Time.current.all_week).pluck(:id) }
-  ## 先週の投稿
-  scope :created_last_week, -> { where(created_at: Time.current.last_week.all_week).pluck(:id) }
+  ## n日前の投稿
+  scope :created_day_ago, -> (day) { where(created_at: Time.zone.now.ago((day).days)).pluck(:id) }
 
   # メソッド
   ## いいね判定
