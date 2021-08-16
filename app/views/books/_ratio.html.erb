@@ -17,16 +17,19 @@
 
 
 <script>
-const myChart = new Chart($("#createdCart"), {
-  type: 'line',
-  data: {
-    labels: <%= raw @day_labels %>,
-    datasets: [{
-      label: '投稿した本の数',
-      backgroundColor: "rgba(0,0,80,0.4)",
-      borderColor: "rgba(0,0,80,1)",
-      data: <%= @day_ratio.values %>
-    }]
-  }
-});
+$(document).on('turbolinks:load', function () {
+  const ctx = $("#createdCart")
+  let myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: <%= raw @day_labels %>,
+      datasets: [{
+        label: '投稿した本の数',
+        backgroundColor: "rgba(0,0,80,0.4)",
+        borderColor: "rgba(0,0,80,1)",
+        data: <%= @day_ratio.values %>
+      }]
+    }
+  });
+})
 </script>
