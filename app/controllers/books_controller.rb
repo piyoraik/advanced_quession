@@ -10,9 +10,9 @@ class BooksController < ApplicationController
     @books = Book.all.includes(:user)
     @day_ratio = {}
     6.downto(1) do |day|
-      @day_ratio.store("#{day}day_ago_count}",Book.created_day_ago(day).count)
+      @day_ratio.store("#{day}day_ago_count}", Book.created_day_ago(day).count)
     end
-    @day_ratio.store("today_count",Book.created_today.count)
+    @day_ratio.store("today_count", Book.created_today.count)
   end
 
   def show

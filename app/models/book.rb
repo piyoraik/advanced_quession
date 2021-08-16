@@ -14,7 +14,7 @@ class Book < ApplicationRecord
   ## 当日の投稿
   scope :created_today, -> { where(created_at: Time.current.all_day).pluck(:id) }
   ## n日前の投稿
-  scope :created_day_ago, -> (day) { where(created_at: Time.zone.now.ago((day).days)).pluck(:id) }
+  scope :created_day_ago, ->(day) { where(created_at: Time.zone.now.ago(day.days)).pluck(:id) }
 
   # メソッド
   ## いいね判定
