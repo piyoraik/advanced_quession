@@ -2,10 +2,9 @@
   <h3>7日分の投稿数</h3>
   <table class="table">
     <tr>
-      <% 6.downto(1) do |day| %>
-        <th><%= day %>日前</th>
+      <% day_labels.each do |label| %>
+        <th><%= label %></th>
       <% end %>
-      <th>今日</th>
     </tr>
     <tr>
       <% day_ratio.each do |key, value| %>
@@ -21,7 +20,7 @@
 const myChart = new Chart($("#createdCart"), {
   type: 'line',
   data: {
-    labels: ["6日前","5日前","4日前","3日前","2日前","1日前","今日",],
+    labels: <%= raw @day_labels %>,
     datasets: [{
       label: '投稿した本の数',
       backgroundColor: "rgba(0,0,80,0.4)",
